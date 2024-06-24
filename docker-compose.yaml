@@ -1,0 +1,36 @@
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_db:
+
+services:
+
+  postgres:
+    image: postgres:16.1-alpine
+    container_name: postgres
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: "YOUR_PASSWORD"
+      POSTGRES_DB: dart_eda
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=dba@site.com
+      - PGADMIN_DEFAULT_PASSWORD=YOUR_PASSWORD
+    depends_on:
+      - postgres
+    ports:
+      - "4053:80"
+    networks:
+      - app_network
