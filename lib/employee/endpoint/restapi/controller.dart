@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:ddd_dart/ddd/payload/response.dart';
+import 'package:ddd_dart/ddd/util/id.dart';
 import 'package:ddd_dart/employee/application_service/command/create_employee.dart';
 import 'package:ddd_dart/employee/application_service/command/edit_employee_name.dart';
 import 'package:shelf/shelf.dart';
@@ -24,11 +26,11 @@ class Controller {
     final body = jsonDecode(await req.readAsString());
 
     final (employee, err) = await createEmployee(
-      CreateEmployeeParams(name: body["name"] ?? ""),
+      CreateEmployeeCommand(name: body["name"] ?? ""),
     );
 
     if (err != null) {
-      return Response.badRequest(body: jsonEncode({"error": err}));
+      return Response.badRequest(body: jsonEncode({"error": err.message}));
     }
 
     return Response.ok(
@@ -40,21 +42,28 @@ class Controller {
   }
 
   Future<Response> _updateEmployeeNameHandler(Request req) async {
+    final traceID = generateID(16);
+
     final id = req.params['id'];
     final body = jsonDecode(await req.readAsString());
 
-    final (employee, err) = await editEmployeeName(
-      EditEmployeeNameParams(id: id!, name: body["name"] ?? ""),
+    final err = await editEmployeeName(
+      EditEmployeeNameCommand(id: id!, name: body["name"] ?? ""),
     );
 
     if (err != null) {
-      return Response.badRequest(body: jsonEncode({"error": err}));
+      return Response.badRequest(
+        body: ErrorResponse(
+          errorMessage: err.message,
+          traceID: traceID,
+          errorCode: err.code,
+        ).json(),
+      );
     }
 
     return Response.ok(
       jsonEncode({
-        "id": employee!.id.toString(),
-        "name": employee.name!.value,
+        "message": "successfully",
       }),
     );
   }
