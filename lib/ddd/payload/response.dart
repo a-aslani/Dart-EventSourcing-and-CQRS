@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 abstract class ResponsePayload {
   final bool success;
   final String? errorCode;
@@ -22,13 +24,13 @@ class SuccessResponse extends ResponsePayload {
           success: true,
         );
 
-  Map<String, dynamic> json() => {
+  String json() => jsonEncode({
     "success": success,
     "error_code": errorCode,
     "error_message": errorMessage,
     "data": data,
     "trace_id": traceID,
-  };
+  });
 }
 
 class ErrorResponse extends ResponsePayload {
@@ -40,11 +42,11 @@ class ErrorResponse extends ResponsePayload {
           success: false,
         );
 
-  Map<String, dynamic> json() => {
+  String json() => jsonEncode({
     "success": success,
     "error_code": errorCode,
     "error_message": errorMessage,
     "data": data,
     "trace_id": traceID,
-  };
+  });
 }

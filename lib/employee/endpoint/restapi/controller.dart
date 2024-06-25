@@ -23,6 +23,8 @@ class Controller {
   }
 
   Future<Response> _createEmployeeHandler(Request req) async {
+    final traceID = generateID(16);
+
     final body = jsonDecode(await req.readAsString());
 
     final (employee, err) = await createEmployee(
@@ -30,14 +32,23 @@ class Controller {
     );
 
     if (err != null) {
-      return Response.badRequest(body: jsonEncode({"error": err.message}));
+      return Response.badRequest(
+        body: ErrorResponse(
+          errorMessage: err.message,
+          traceID: traceID,
+          errorCode: err.code,
+        ).json(),
+      );
     }
 
     return Response.ok(
-      jsonEncode({
-        "id": employee!.id.toString(),
-        "name": employee.name!.value,
-      }),
+      SuccessResponse(
+        data: {
+          "id": employee!.id.toString(),
+          "name": employee.name!.value,
+        },
+        traceID: traceID,
+      ).json(),
     );
   }
 
@@ -62,9 +73,12 @@ class Controller {
     }
 
     return Response.ok(
-      jsonEncode({
-        "message": "successfully",
-      }),
+      SuccessResponse(
+        data: {
+          "message": "successfully"
+        },
+        traceID: traceID,
+      ).json(),
     );
   }
 }
