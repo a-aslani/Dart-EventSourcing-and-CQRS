@@ -1,8 +1,8 @@
 import '../../equatable.dart';
 import 'auditable_entity.dart';
 
-abstract class Entity<T> extends AuditableEntity with EquatableMixin {
-  T id;
+abstract class Entity<TId> extends AuditableEntity with EquatableMixin {
+  TId id;
 
   // BusinessId businessId = BusinessId.create(value: Guid());
 

@@ -1,12 +1,12 @@
-import 'package:ddd_dart/employee/contracts/employee_repository.dart';
+import 'package:ddd_dart/employee/contracts/employee_command_repository.dart';
 import 'package:ddd_dart/employee/domain/entities/employee.dart';
 import 'package:postgres/postgres.dart';
 
-class EmployeePostgresRepository implements EmployeeRepository {
+class PostgresEmployeeCommandRepository implements EmployeeCommandRepository {
 
   final Connection conn;
 
-  EmployeePostgresRepository(this.conn);
+  PostgresEmployeeCommandRepository(this.conn);
 
   @override
   Future<Employee> load(String id) async {

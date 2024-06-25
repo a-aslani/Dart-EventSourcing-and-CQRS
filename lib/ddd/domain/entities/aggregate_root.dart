@@ -2,7 +2,7 @@ import '../events/domain_event.dart';
 import 'entity.dart';
 import 'i_aggregate_root.dart';
 
-abstract class AggregateRoot<T> extends Entity<T> implements IAggregateRoot {
+abstract class AggregateRoot<TId> extends Entity<TId> implements IAggregateRoot {
   final List<DomainEvent> _events = [];
 
   AggregateRoot({required super.id});

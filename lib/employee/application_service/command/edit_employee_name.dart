@@ -1,11 +1,11 @@
 import 'package:ddd_dart/ddd/application_service.dart';
 import 'package:ddd_dart/ddd/domain/exceptions/invalid_value_object_state_exception.dart';
-import 'package:ddd_dart/employee/contracts/employee_repository.dart';
+import 'package:ddd_dart/employee/contracts/employee_command_repository.dart';
 import 'package:ddd_dart/employee/domain/entities/employee.dart';
 
 class EditEmployeeName extends ApplicationService<Employee, EditEmployeeNameParams> {
 
-  final EmployeeRepository repository;
+  final EmployeeCommandRepository repository;
 
   EditEmployeeName({required this.repository});
 

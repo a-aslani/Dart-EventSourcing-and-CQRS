@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:ddd_dart/employee/application_service/command/create_employee.dart';
 import 'package:ddd_dart/employee/application_service/command/edit_employee_name.dart';
 import 'package:ddd_dart/employee/endpoint/restapi/controller.dart';
-import 'package:ddd_dart/employee/infrastructure/repository/employee_postgres_repository.dart';
+import 'package:ddd_dart/employee/infrastructure/repository/postgres_employee_command_repository.dart';
 import 'package:postgres/postgres.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
@@ -19,7 +19,7 @@ void main(List<String> args) async {
     settings: ConnectionSettings(sslMode: SslMode.disable),
   );
 
-  final repository = EmployeePostgresRepository(conn);
+  final repository = PostgresEmployeeCommandRepository(conn);
 
   final controller = Controller(
     createEmployee: CreateEmployee(repository: repository),
