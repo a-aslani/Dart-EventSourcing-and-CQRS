@@ -32,6 +32,7 @@ class CreateEmployee
         null,
         ServiceFailure(
           message: e.message,
+          code: e.code,
         )
       );
     } catch (e) {

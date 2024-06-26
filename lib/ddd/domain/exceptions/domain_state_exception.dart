@@ -1,26 +1,17 @@
-class DomainStateException implements Exception {
-  List<String>? _parameters = [];
-  String? _message;
+import '../../apperror/error.dart';
 
-  DomainStateException({required message, List<String>? parameters}) {
-    _message = message;
-    _parameters = parameters;
+class DomainStateException implements Exception {
+  ErrorType? _error;
+
+  DomainStateException({required ErrorType error}) {
+    _error = error;
   }
 
   String get message => toString();
+  String get code => _error!.code();
 
   @override
   String toString() {
-    if (_parameters == null || _parameters!.isEmpty) {
-      return _message!;
-    }
-
-    String result = _message!;
-
-    for (int i = 0; i < _parameters!.length; i++) {
-      result = result.replaceAll("{{$i}}", _parameters![i]);
-    }
-
-    return result;
+    return _error!.toString();
   }
 }

@@ -1,3 +1,4 @@
+import 'package:ddd_dart/ddd/apperror/error.dart';
 import 'package:ddd_dart/ddd/domain/entities/aggregate_root.dart';
 import 'package:ddd_dart/ddd/domain/events/domain_event.dart';
 import 'package:ddd_dart/ddd/domain/exceptions/invalid_event_state_exception.dart';
@@ -26,8 +27,10 @@ class Employee extends AggregateRoot<Guid> {
       name = EmployeeName(event.name);
     } else {
       throw InvalidEventStateException(
-          message: "{{0}} is a invalid event",
-          parameters: [event.runtimeType.toString()]);
+          error: ErrorType("{{0}} is a invalid event").vars(
+              params: [event.runtimeType.toString()],
+          ),
+      );
     }
   }
 }

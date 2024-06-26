@@ -1,3 +1,4 @@
+import '../../apperror/error.dart';
 import '../exceptions/invalid_value_object_state_exception.dart';
 import '../../guid.dart';
 import 'base_value_object.dart';
@@ -10,7 +11,7 @@ class BusinessId extends BaseValueObject<BusinessId> {
   factory BusinessId.create({required Guid value}) {
     if (value.toString().trim().isEmpty) {
       throw InvalidValueObjectStateException(
-        message: "business id is required",
+        error: ErrorType("business id is required"),
       );
     }
 

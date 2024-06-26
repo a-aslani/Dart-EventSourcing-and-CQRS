@@ -24,6 +24,7 @@ class EditEmployeeName extends CommandHandler<EditEmployeeNameCommand> {
     } on InvalidValueObjectStateException catch (e) {
       return ServiceFailure(
         message: e.message,
+        code: e.code,
       );
     } catch (e) {
       return ServiceFailure(message: e.toString());
