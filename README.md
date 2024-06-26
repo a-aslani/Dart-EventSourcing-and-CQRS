@@ -1,4 +1,4 @@
-# Event-Driven Architecture in Dart Backend
+# Event-Driven Architecture in Dart
 
 ![Event-driven architecture](https://serverlessland.com/assets/visuals/eda/inside-eda.png)
 

@@ -10,7 +10,7 @@ import 'package:shelf/shelf_io.dart';
 void main(List<String> args) async {
   final conn = await Connection.open(
     Endpoint(
-      host: 'postgres',
+      host: 'localhost',
       database: 'dart_eda',
       username: 'root',
       password: 'YOUR_PASSWORD',
