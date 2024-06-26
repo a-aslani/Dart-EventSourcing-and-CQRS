@@ -34,3 +34,16 @@ services:
       - "4053:80"
     networks:
       - app_network
+
+  app:
+    container_name: app
+    build: .
+    environment:
+      - CONFIG_FILE=config.prod.yml
+      - GIN_MODE=release
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - app_network

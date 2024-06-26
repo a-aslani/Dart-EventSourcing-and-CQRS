@@ -1,49 +1,27 @@
-A server app built using [Shelf](https://pub.dev/packages/shelf),
-configured to enable running with [Docker](https://www.docker.com/).
+# Event-Driven Architecture in Dart Backend
 
-This sample code handles HTTP GET requests to `/` and `/echo/<message>`
+![Event-driven architecture](https://serverlessland.com/assets/visuals/eda/inside-eda.png)
 
-# Running the sample
+Event-driven architecture (EDA) is a software architecture paradigm promoting the production, detection, consumption of, and reaction to events.
 
-## Running with the Dart SDK
+### Full list what has been used:
+[EventStoreDB](https://www.eventstore.com) The database built for Event Sourcing<br/>
+[PostgreSQL](https://pub.dev/packages/postgres) Application Database<br/>
+[Shelf Router](https://pub.dev/packages/shelf_router) / [Shelf](https://pub.dev/packages/shelf) A lightweight, idiomatic and composable router for building Dart HTTP services<br/>
 
-You can run the example with the [Dart SDK](https://dart.dev/get-dart)
-like this:
-
-```
-$ dart run bin/server.dart
-Server listening on port 8080
-```
-
-And then from a second terminal:
-```
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
-```
-
-## Running with Docker
-
+### Build and run with Docker compose
 If you have [Docker Desktop](https://www.docker.com/get-started) installed, you
 can build and run with the `docker` command:
 
 ```
-$ docker build . -t myserver
-$ docker run -it -p 8080:8080 myserver
+$ docker compose up
 Server listening on port 8080
 ```
 
-And then from a second terminal:
-```
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
-```
+### Swagger UI:
 
-You should see the logging printed in the first terminal:
-```
-2021-05-06T15:47:04.620417  0:00:00.000158 GET     [200] /
-2021-05-06T15:47:08.392928  0:00:00.001216 GET     [200] /echo/I_love_Dart
-```
+http://localhost:8000
+
+### EventStoreDB UI:
+
+http://localhost:2113
