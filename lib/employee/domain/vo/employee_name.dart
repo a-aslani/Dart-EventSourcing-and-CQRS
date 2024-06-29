@@ -1,6 +1,6 @@
-import 'package:ddd_dart/ddd/domain/exceptions/invalid_value_object_state_exception.dart';
-import 'package:ddd_dart/ddd/domain/value_objects/base_value_object.dart';
 import 'package:ddd_dart/employee/domain/error/error_codes.dart';
+import 'package:eda/domain.dart';
+import 'package:eda/exceptions.dart';
 
 const employeeNameMinLen = 4;
 

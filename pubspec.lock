@@ -94,6 +94,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  eda:
+    dependency: "direct main"
+    description:
+      name: eda
+      sha256: "27f1ce863e629d5098fac5424fd4708183a2f6dfdd14646957ce4d04c8b1772b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   file:
     dependency: transitive
     description:
@@ -310,6 +318,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.2"
+  shelf_swagger_ui:
+    dependency: "direct main"
+    description:
+      name: shelf_swagger_ui
+      sha256: "36793398760659311d767f2fd9760bac18784b7bf8fca2756d83a387b6268443"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+2"
   shelf_web_socket:
     dependency: transitive
     description:

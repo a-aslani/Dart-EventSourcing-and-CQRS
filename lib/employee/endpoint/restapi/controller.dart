@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:ddd_dart/ddd/payload/response.dart';
-import 'package:ddd_dart/ddd/util/id.dart';
 import 'package:ddd_dart/employee/application_service/command/create_employee.dart';
 import 'package:ddd_dart/employee/application_service/command/edit_employee_name.dart';
+import 'package:eda/payload.dart';
+import 'package:eda/util.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 

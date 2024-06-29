@@ -1,4 +1,4 @@
-import 'package:ddd_dart/ddd/domain/events/domain_event.dart';
+import 'package:eda/domain.dart';
 
 class EmployeeNameUpdated extends DomainEvent {
   final String name;

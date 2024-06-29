@@ -1,11 +1,10 @@
-import 'package:ddd_dart/ddd/apperror/error.dart';
-import 'package:ddd_dart/ddd/domain/entities/aggregate_root.dart';
-import 'package:ddd_dart/ddd/domain/events/domain_event.dart';
-import 'package:ddd_dart/ddd/domain/exceptions/invalid_event_state_exception.dart';
-import 'package:ddd_dart/ddd/guid.dart';
 import 'package:ddd_dart/employee/domain/domain_events/employee_created.dart';
 import 'package:ddd_dart/employee/domain/domain_events/employee_name_updated.dart';
 import 'package:ddd_dart/employee/domain/vo/employee_name.dart';
+import 'package:eda/domain.dart';
+import 'package:eda/eda.dart';
+import 'package:eda/error.dart';
+import 'package:eda/exceptions.dart';
 
 class Employee extends AggregateRoot<Guid> {
 

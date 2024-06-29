@@ -11,6 +11,8 @@ dependencies:
   shelf: ^1.4.2
   shelf_router: ^1.1.4
   postgres: ^3.2.1
+  shelf_swagger_ui: ^1.0.0+2
+  eda: ^0.1.0
 
 dev_dependencies:
   http: ^1.2.1
